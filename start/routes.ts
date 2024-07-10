@@ -20,6 +20,6 @@ router.delete('/teachers/:id', [TeachersController, 'delete'])
 // Student
 router.post('/students/', [StudentsController, 'store'])
 router.get('/students/:id', [StudentsController, 'read'])
-// router.put('/students/:id', [StudentsController, 'update'])
+router.put('/students/:id', [StudentsController, 'update'])
 // router.delete('/students/:id', [StudentsController, 'delete'])
 
