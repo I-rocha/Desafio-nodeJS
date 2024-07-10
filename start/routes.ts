@@ -8,9 +8,10 @@
 */
 
 import router from '@adonisjs/core/services/router'
+const TeachersController = () => import('#controllers/teachers_controller')
 
-router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
-})
+router.post('/teachers/', [TeachersController, 'store'])
+// router.get('/teachers/:id', [TeachersController, 'read'])
+// router.put('/teachers/:id', [TeachersController, 'update'])
+// router.put('/teachers/:id', [TeachersController, 'update'])
+
