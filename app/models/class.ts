@@ -1,4 +1,6 @@
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import Teacher from './teacher.js'
 
 export default class Class extends BaseModel {
   @column({ isPrimary: true })
@@ -14,6 +16,8 @@ export default class Class extends BaseModel {
   declare capacity: number
 
   @column({})
-  declare available: number
-}
+  declare available: boolean
 
+  @belongsTo(() => Teacher)
+  declare teacher: BelongsTo<typeof Teacher>
+}
