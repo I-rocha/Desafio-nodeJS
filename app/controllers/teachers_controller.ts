@@ -16,5 +16,13 @@ export default class TeachersController {
       message: 'Professor criado com sucesso',
     })
   }
+
+  public async read({ request, response }: HttpContext) {
+    const teacher: Teacher | null = await Teacher.find(request.param('id'))
+    if (teacher === null) {
+      return response.abort({ message: 'Professor não encontrado' })
+    }
+    return teacher
+  }
 }
 
