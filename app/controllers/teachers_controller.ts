@@ -43,5 +43,14 @@ export default class TeachersController {
     teacher.save()
     return teacher
   }
+
+  public async delete({ request, response }: HttpContext) {
+    const teacher: Teacher | null = await Teacher.find(request.param('id'))
+    if (teacher === null) {
+      return response.json({ message: 'Professor já não existe' })
+    }
+    teacher.delete()
+    return response.json({ message: 'Professor deletado', data: teacher })
+  }
 }
 
