@@ -11,7 +11,7 @@ export default class extends BaseSchema {
 
       table.integer('class_no').notNullable().unique()
       table.integer('capacity').notNullable()
-      table.boolean('avaliable').notNullable().defaultTo(true)
+      table.boolean('available').notNullable().defaultTo(true)
     })
   }
 
@@ -19,4 +19,3 @@ export default class extends BaseSchema {
     this.schema.dropTable(this.tableName)
   }
 }
-
