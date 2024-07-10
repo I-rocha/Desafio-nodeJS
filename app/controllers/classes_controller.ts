@@ -19,6 +19,14 @@ export default class ClassesController {
     return myClass
   }
 
+  public async read({ request, response }: HttpContext) {
+    const myClass: Class | null = await Class.find(request.param('id'))
+    if (myClass === null) {
+      return response.abort({ message: 'Classe não encontrada' })
+    }
+    return myClass
+  }
+
   public async update({ request, response }: HttpContext) {
     const myClass: Class | null = await Class.find(request.param('id'))
 
