@@ -16,5 +16,13 @@ export default class StudentsController {
       message: 'Estudante criado com sucesso',
     })
   }
+
+  public async read({ request, response }: HttpContext) {
+    const student: Student | null = await Student.find(request.param('id'))
+    if (student === null) {
+      return response.abort({ message: 'Estudante não encontrado' })
+    }
+    return student
+  }
 }
 
