@@ -43,5 +43,14 @@ export default class StudentsController {
     student.save()
     return student
   }
+
+  public async delete({ request, response }: HttpContext) {
+    const student: Student | null = await Student.find(request.param('id'))
+    if (student === null) {
+      return response.json({ message: 'Estudante já não existe' })
+    }
+    student.delete()
+    return response.json({ message: 'Estudante deletado', data: student })
+  }
 }
 
